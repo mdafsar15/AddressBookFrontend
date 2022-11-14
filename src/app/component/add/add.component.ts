@@ -16,8 +16,8 @@ export class AddComponent implements OnInit {
   public addressBookFormGroup: FormGroup = new FormGroup({});
   public leftButton: string = "Add";
   public rightButton: string = "Reset";
-  public states: Array<any> = [];
-  public cities: Array<any> = [];
+  public states: Array<any> = ["Jharkhand","Haryana"];
+  public cities: Array<any> = ["Ranchi","Gurgaon"];
   public stateDetails: Array<any> = [];
   id: any;
 
@@ -59,7 +59,6 @@ export class AddComponent implements OnInit {
         }
       });
     }
-    this.getState();
   }
 
   /**
@@ -100,16 +99,6 @@ getCity(state: any) {
       console.log(this.stateDetails[i]?.city);
     }
   }
-}
-
-getState(): void {
-  this.httpService.getStateDetails().subscribe(data => {
-    this.stateDetails = data.data;
-    console.log(this.stateDetails);
-    for (let i = 0; i < this.stateDetails.length; i++) {
-      this.states.push(this.stateDetails[i]?.state);
-    }
-  });
 }
 
   /**
